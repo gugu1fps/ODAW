@@ -17,25 +17,20 @@
     <button onclick="clicarCom()">Contar</button>
 
     <script>
-        // 1. SEM AJAX: Recarrega a página inteira de forma síncrona
         function clicarSem() {
             let valor = Number(localStorage.getItem('s') || 0) + 1;
             localStorage.setItem('s', valor);
 
-            // Recarregamento padrão do navegador (Request-Response completo)
             location.reload();
         }
 
-        // 2. COM AJAX: Atualiza apenas o elemento no DOM, sem recarregar
         function clicarCom() {
             let valor = Number(localStorage.getItem('c') || 0) + 1;
             localStorage.setItem('c', valor);
 
-            // Atualização cirúrgica do DOM em segundo plano
             document.getElementById('numCom').innerText = valor;
         }
 
-        // Carrega os valores salvos ao abrir a página
         document.getElementById('numSem').innerText = localStorage.getItem('s') || 0;
         document.getElementById('numCom').innerText = localStorage.getItem('c') || 0;
     </script>
