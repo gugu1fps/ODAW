@@ -20,8 +20,11 @@
         function clicarSem() {
             let valor = Number(localStorage.getItem('s') || 0) + 1;
             localStorage.setItem('s', valor);
-
-            location.reload();
+    
+            document.body.innerHTML = "";
+            setTimeout(() => { 
+                location.reload(); 
+            }, 200);
         }
 
         function clicarCom() {
