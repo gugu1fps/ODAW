@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax vs Tradicional</title>
+</head>
+<body style="font-family: Arial; text-align: center; margin-top: 50px;">
+
+    <h2>Contador sem AJAX (Tradicional)</h2>
+    <p>Cliques: <span id="numSem">0</span></p>
+    <button onclick="clicarSem()">Contar</button>
+
+    <hr style="margin: 40px;">
+
+    <h2>Contador com AJAX (Moderno)</h2>
+    <p>Cliques: <span id="numCom">0</span></p>
+    <button onclick="clicarCom()">Contar</button>
+
+    <script>
+        // 1. SEM AJAX: Recarrega a página inteira de forma síncrona
+        function clicarSem() {
+            let valor = Number(localStorage.getItem('s') || 0) + 1;
+            localStorage.setItem('s', valor);
+
+            // Recarregamento padrão do navegador (Request-Response completo)
+            location.reload();
+        }
+
+        // 2. COM AJAX: Atualiza apenas o elemento no DOM, sem recarregar
+        function clicarCom() {
+            let valor = Number(localStorage.getItem('c') || 0) + 1;
+            localStorage.setItem('c', valor);
+
+            // Atualização cirúrgica do DOM em segundo plano
+            document.getElementById('numCom').innerText = valor;
+        }
+
+        // Carrega os valores salvos ao abrir a página
+        document.getElementById('numSem').innerText = localStorage.getItem('s') || 0;
+        document.getElementById('numCom').innerText = localStorage.getItem('c') || 0;
+    </script>
+
+</body>
+</html>
